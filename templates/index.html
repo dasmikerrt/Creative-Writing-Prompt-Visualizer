@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creative Writing Prompt & Visualizer</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>🖋️ Prompt & Muse</h1>
+  <button id="generateBtn">Give me a prompt!</button>
+  <div id="result">
+    <p id="prompt"></p>
+    <img id="image" src="" alt="Generated image" style="max-width: 600px;">
+  </div>
+
+  <script>
+    $('#generateBtn').click(function() {
+      $.post('/generate', function(data) {
+        $('#prompt').text(data.prompt);
+        $('#image').attr('src', data.image_url);
+      });
+    });
+  </script>
+</body>
+</html>
